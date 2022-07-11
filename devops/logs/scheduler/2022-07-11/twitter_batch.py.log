@@ -1,0 +1,44 @@
+[2022-07-11 03:50:02,180] {processor.py:153} INFO - Started process (PID=93) to work on /opt/airflow/dags/twitter_batch.py
+[2022-07-11 03:50:02,182] {processor.py:641} INFO - Processing file /opt/airflow/dags/twitter_batch.py for tasks to queue
+[2022-07-11 03:50:02,313] {logging_mixin.py:115} INFO - [2022-07-11 03:50:02,312] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/twitter_batch.py
+[2022-07-11 03:50:02,596] {processor.py:651} INFO - DAG(s) dict_keys(['twitter_batch']) retrieved from /opt/airflow/dags/twitter_batch.py
+[2022-07-11 03:50:11,134] {logging_mixin.py:115} INFO - [2022-07-11 03:50:11,133] {manager.py:508} INFO - Created Permission View: can read on DAG:twitter_batch
+[2022-07-11 03:50:11,533] {logging_mixin.py:115} INFO - [2022-07-11 03:50:11,533] {manager.py:508} INFO - Created Permission View: can delete on DAG:twitter_batch
+[2022-07-11 03:50:11,558] {logging_mixin.py:115} INFO - [2022-07-11 03:50:11,558] {manager.py:508} INFO - Created Permission View: can edit on DAG:twitter_batch
+[2022-07-11 03:50:11,560] {logging_mixin.py:115} INFO - [2022-07-11 03:50:11,560] {dag.py:2420} INFO - Sync 1 DAGs
+[2022-07-11 03:50:11,598] {logging_mixin.py:115} INFO - [2022-07-11 03:50:11,598] {dag.py:2439} INFO - Creating ORM DAG for twitter_batch
+[2022-07-11 03:50:11,791] {logging_mixin.py:115} INFO - [2022-07-11 03:50:11,791] {dag.py:2972} INFO - Setting next_dagrun for twitter_batch to 2022-07-11T02:00:00+00:00, run_after=2022-07-11T03:00:00+00:00
+[2022-07-11 03:50:12,127] {processor.py:161} INFO - Processing /opt/airflow/dags/twitter_batch.py took 10.040 seconds
+[2022-07-11 03:50:44,008] {processor.py:153} INFO - Started process (PID=114) to work on /opt/airflow/dags/twitter_batch.py
+[2022-07-11 03:50:44,040] {processor.py:641} INFO - Processing file /opt/airflow/dags/twitter_batch.py for tasks to queue
+[2022-07-11 03:50:44,070] {logging_mixin.py:115} INFO - [2022-07-11 03:50:44,067] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/twitter_batch.py
+[2022-07-11 03:50:44,338] {processor.py:651} INFO - DAG(s) dict_keys(['twitter_batch']) retrieved from /opt/airflow/dags/twitter_batch.py
+[2022-07-11 03:50:47,268] {logging_mixin.py:115} INFO - [2022-07-11 03:50:47,254] {dag.py:2420} INFO - Sync 1 DAGs
+[2022-07-11 03:50:48,390] {logging_mixin.py:115} INFO - [2022-07-11 03:50:48,390] {dag.py:2972} INFO - Setting next_dagrun for twitter_batch to 2022-07-11T02:00:00+00:00, run_after=2022-07-11T03:00:00+00:00
+[2022-07-11 03:50:48,846] {processor.py:161} INFO - Processing /opt/airflow/dags/twitter_batch.py took 4.946 seconds
+[2022-07-11 03:51:22,345] {processor.py:153} INFO - Started process (PID=131) to work on /opt/airflow/dags/twitter_batch.py
+[2022-07-11 03:51:22,363] {processor.py:641} INFO - Processing file /opt/airflow/dags/twitter_batch.py for tasks to queue
+[2022-07-11 03:51:22,386] {logging_mixin.py:115} INFO - [2022-07-11 03:51:22,385] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/twitter_batch.py
+[2022-07-11 03:51:24,526] {processor.py:651} INFO - DAG(s) dict_keys(['twitter_batch']) retrieved from /opt/airflow/dags/twitter_batch.py
+[2022-07-11 03:51:48,100] {logging_mixin.py:115} INFO - [2022-07-11 03:51:48,065] {dag.py:2420} INFO - Sync 1 DAGs
+[2022-07-11 03:51:50,606] {logging_mixin.py:115} INFO - [2022-07-11 03:51:50,606] {dag.py:2972} INFO - Setting next_dagrun for twitter_batch to 2022-07-11T02:00:00+00:00, run_after=2022-07-11T03:00:00+00:00
+[2022-07-11 03:51:51,646] {processor.py:161} INFO - Processing /opt/airflow/dags/twitter_batch.py took 29.281 seconds
+[2022-07-11 04:09:09,099] {processor.py:153} INFO - Started process (PID=349) to work on /opt/airflow/dags/twitter_batch.py
+[2022-07-11 04:09:10,558] {processor.py:641} INFO - Processing file /opt/airflow/dags/twitter_batch.py for tasks to queue
+[2022-07-11 04:09:49,808] {processor.py:153} INFO - Started process (PID=357) to work on /opt/airflow/dags/twitter_batch.py
+[2022-07-11 04:09:50,743] {processor.py:641} INFO - Processing file /opt/airflow/dags/twitter_batch.py for tasks to queue
+[2022-07-11 04:09:50,820] {logging_mixin.py:115} INFO - [2022-07-11 04:09:50,770] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/twitter_batch.py
+[2022-07-11 04:10:11,215] {processor.py:651} INFO - DAG(s) dict_keys(['twitter_batch']) retrieved from /opt/airflow/dags/twitter_batch.py
+[2022-07-11 04:11:53,461] {processor.py:153} INFO - Started process (PID=377) to work on /opt/airflow/dags/twitter_batch.py
+[2022-07-11 04:12:01,884] {processor.py:641} INFO - Processing file /opt/airflow/dags/twitter_batch.py for tasks to queue
+[2022-07-11 04:12:02,864] {logging_mixin.py:115} INFO - [2022-07-11 04:12:02,676] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/twitter_batch.py
+[2022-07-11 04:12:35,478] {processor.py:153} INFO - Started process (PID=388) to work on /opt/airflow/dags/twitter_batch.py
+[2022-07-11 04:12:36,018] {processor.py:641} INFO - Processing file /opt/airflow/dags/twitter_batch.py for tasks to queue
+[2022-07-11 04:12:38,983] {logging_mixin.py:115} INFO - [2022-07-11 04:12:38,801] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/twitter_batch.py
+[2022-07-11 04:13:55,564] {processor.py:153} INFO - Started process (PID=400) to work on /opt/airflow/dags/twitter_batch.py
+[2022-07-11 04:14:09,907] {processor.py:641} INFO - Processing file /opt/airflow/dags/twitter_batch.py for tasks to queue
+[2022-07-11 04:14:10,465] {logging_mixin.py:115} INFO - [2022-07-11 04:14:10,464] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/twitter_batch.py
+[2022-07-11 04:15:15,262] {processor.py:153} INFO - Started process (PID=418) to work on /opt/airflow/dags/twitter_batch.py
+[2022-07-11 04:15:15,713] {processor.py:641} INFO - Processing file /opt/airflow/dags/twitter_batch.py for tasks to queue
+[2022-07-11 04:15:17,106] {logging_mixin.py:115} INFO - [2022-07-11 04:15:17,075] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/twitter_batch.py
+[2022-07-11 04:15:33,559] {processor.py:651} INFO - DAG(s) dict_keys(['twitter_batch']) retrieved from /opt/airflow/dags/twitter_batch.py

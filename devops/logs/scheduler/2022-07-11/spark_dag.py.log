@@ -1,0 +1,141 @@
+[2022-07-11 03:50:01,997] {processor.py:153} INFO - Started process (PID=92) to work on /opt/airflow/dags/spark_dag.py
+[2022-07-11 03:50:02,006] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark_dag.py for tasks to queue
+[2022-07-11 03:50:02,041] {logging_mixin.py:115} INFO - [2022-07-11 03:50:02,032] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/spark_dag.py
+[2022-07-11 03:50:02,519] {processor.py:651} INFO - DAG(s) dict_keys(['twitter_batch']) retrieved from /opt/airflow/dags/spark_dag.py
+[2022-07-11 03:50:10,458] {logging_mixin.py:115} INFO - [2022-07-11 03:50:10,457] {manager.py:420} ERROR - Add View Menu Error: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "serialized_dag_pkey"
+DETAIL:  Key (dag_id)=(twitter_batch) already exists.
+
+[SQL: INSERT INTO serialized_dag (dag_id, fileloc, fileloc_hash, data, data_compressed, last_updated, dag_hash) VALUES (%(dag_id)s, %(fileloc)s, %(fileloc_hash)s, %(data)s, %(data_compressed)s, %(last_updated)s, %(dag_hash)s)]
+[parameters: {'dag_id': 'twitter_batch', 'fileloc': '/opt/airflow/dags/spark_dag.py', 'fileloc_hash': 8570941089466801, 'data': '{"__version": 1, "dag": {"catchup": false, "fileloc": "/opt/airflow/dags/spark_dag.py", "_dag_id": "twitter_batch", "_task_group": {"_group_id": null ... (2809 characters truncated) ... gestion"}, {"source": "twitter_batch", "target": "1.3_dbt_dag", "dependency_type": "trigger", "dependency_id": "trigger_target_dbt"}], "params": {}}}', 'data_compressed': None, 'last_updated': datetime.datetime(2022, 7, 11, 3, 50, 2, 746704, tzinfo=Timezone('UTC')), 'dag_hash': '6a05abedc28a32dcffd462e817e7cd4c'}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+[2022-07-11 03:50:11,178] {logging_mixin.py:115} INFO - [2022-07-11 03:50:11,178] {manager.py:508} INFO - Created Permission View: can read on None
+[2022-07-11 03:50:11,746] {logging_mixin.py:115} INFO - [2022-07-11 03:50:11,745] {dag.py:2420} INFO - Sync 1 DAGs
+[2022-07-11 03:50:11,961] {logging_mixin.py:115} INFO - [2022-07-11 03:50:11,961] {dag.py:2439} INFO - Creating ORM DAG for twitter_batch
+[2022-07-11 03:50:12,284] {logging_mixin.py:115} INFO - [2022-07-11 03:50:12,280] {dag.py:2972} INFO - Setting next_dagrun for twitter_batch to 2022-07-11T02:00:00+00:00, run_after=2022-07-11T03:00:00+00:00
+[2022-07-11 03:50:12,808] {logging_mixin.py:115} WARNING - /home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py:610 DeprecationWarning: DAG.full_filepath is deprecated in favour of fileloc
+[2022-07-11 03:50:12,825] {logging_mixin.py:115} INFO - [2022-07-11 03:50:12,810] {dagbag.py:610} ERROR - Failed to write serialized DAG: /opt/airflow/dags/spark_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 602, in _serialize_dag_capturing_errors
+    session=session,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/serialized_dag.py", line 142, in write_dag
+    (timezone.utcnow() - timedelta(seconds=min_update_interval)) < cls.last_updated,
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2810, in first
+    return self.limit(1)._iter().first()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2897, in _iter
+    execution_options={"_sa_orm_load_options": self.load_options},
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1688, in execute
+    conn = self._connection_for_bind(bind)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1530, in _connection_for_bind
+    engine, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 721, in _connection_for_bind
+    self._assert_active()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 608, in _assert_active
+    code="7s2a",
+sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "dag_pkey"
+DETAIL:  Key (dag_id)=(twitter_batch) already exists.
+
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: {'dag_id': 'twitter_batch', 'root_dag_id': None, 'is_paused': True, 'is_subdag': False, 'is_active': True, 'last_parsed_time': datetime.datetime(2022, 7, 11, 3, 50, 12, 183374, tzinfo=Timezone('UTC')), 'last_pickled': None, 'last_expired': None, 'scheduler_lock': None, 'pickle_id': None, 'fileloc': '/opt/airflow/dags/spark_dag.py', 'owners': 'BI', 'description': None, 'default_view': 'grid', 'schedule_interval': '"0 */1 * * *"', 'timetable_description': 'Every hour', 'max_active_tasks': 16, 'max_active_runs': 16, 'has_task_concurrency_limits': False, 'has_import_errors': False, 'next_dagrun': DateTime(2022, 7, 11, 2, 0, 0, tzinfo=Timezone('UTC')), 'next_dagrun_data_interval_start': DateTime(2022, 7, 11, 2, 0, 0, tzinfo=Timezone('UTC')), 'next_dagrun_data_interval_end': DateTime(2022, 7, 11, 3, 0, 0, tzinfo=Timezone('UTC')), 'next_dagrun_create_after': DateTime(2022, 7, 11, 3, 0, 0, tzinfo=Timezone('UTC'))}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) (Background on this error at: https://sqlalche.me/e/14/7s2a)
+[2022-07-11 03:50:12,831] {logging_mixin.py:115} INFO - [2022-07-11 03:50:12,831] {dag.py:2420} INFO - Sync 1 DAGs
+[2022-07-11 03:50:12,835] {processor.py:164} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 158, in _run_file_processor
+    callback_requests=callback_requests,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/dag_processing/processor.py", line 660, in process_file
+    dagbag.sync_to_db()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 71, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 616, in sync_to_db
+    for attempt in run_with_db_retries(logger=self.log):
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 382, in __iter__
+    do = self.iter(retry_state=retry_state)
+  File "/home/airflow/.local/lib/python3.7/site-packages/tenacity/__init__.py", line 349, in iter
+    return fut.result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 428, in result
+    return self.__get_result()
+  File "/usr/local/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 630, in sync_to_db
+    DAG.bulk_write_to_db(self.dags.values(), session=session)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 68, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dag.py", line 2428, in bulk_write_to_db
+    orm_dags: List[DagModel] = with_row_locks(query, of=DagModel, session=session).all()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2759, in all
+    return self._iter().all()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2897, in _iter
+    execution_options={"_sa_orm_load_options": self.load_options},
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1688, in execute
+    conn = self._connection_for_bind(bind)
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1530, in _connection_for_bind
+    engine, execution_options
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 721, in _connection_for_bind
+    self._assert_active()
+  File "/home/airflow/.local/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 608, in _assert_active
+    code="7s2a",
+sqlalchemy.exc.PendingRollbackError: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "dag_pkey"
+DETAIL:  Key (dag_id)=(twitter_batch) already exists.
+
+[SQL: INSERT INTO dag (dag_id, root_dag_id, is_paused, is_subdag, is_active, last_parsed_time, last_pickled, last_expired, scheduler_lock, pickle_id, fileloc, owners, description, default_view, schedule_interval, timetable_description, max_active_tasks, max_active_runs, has_task_concurrency_limits, has_import_errors, next_dagrun, next_dagrun_data_interval_start, next_dagrun_data_interval_end, next_dagrun_create_after) VALUES (%(dag_id)s, %(root_dag_id)s, %(is_paused)s, %(is_subdag)s, %(is_active)s, %(last_parsed_time)s, %(last_pickled)s, %(last_expired)s, %(scheduler_lock)s, %(pickle_id)s, %(fileloc)s, %(owners)s, %(description)s, %(default_view)s, %(schedule_interval)s, %(timetable_description)s, %(max_active_tasks)s, %(max_active_runs)s, %(has_task_concurrency_limits)s, %(has_import_errors)s, %(next_dagrun)s, %(next_dagrun_data_interval_start)s, %(next_dagrun_data_interval_end)s, %(next_dagrun_create_after)s)]
+[parameters: {'dag_id': 'twitter_batch', 'root_dag_id': None, 'is_paused': True, 'is_subdag': False, 'is_active': True, 'last_parsed_time': datetime.datetime(2022, 7, 11, 3, 50, 12, 183374, tzinfo=Timezone('UTC')), 'last_pickled': None, 'last_expired': None, 'scheduler_lock': None, 'pickle_id': None, 'fileloc': '/opt/airflow/dags/spark_dag.py', 'owners': 'BI', 'description': None, 'default_view': 'grid', 'schedule_interval': '"0 */1 * * *"', 'timetable_description': 'Every hour', 'max_active_tasks': 16, 'max_active_runs': 16, 'has_task_concurrency_limits': False, 'has_import_errors': False, 'next_dagrun': DateTime(2022, 7, 11, 2, 0, 0, tzinfo=Timezone('UTC')), 'next_dagrun_data_interval_start': DateTime(2022, 7, 11, 2, 0, 0, tzinfo=Timezone('UTC')), 'next_dagrun_data_interval_end': DateTime(2022, 7, 11, 3, 0, 0, tzinfo=Timezone('UTC')), 'next_dagrun_create_after': DateTime(2022, 7, 11, 3, 0, 0, tzinfo=Timezone('UTC'))}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj) (Background on this error at: https://sqlalche.me/e/14/7s2a)
+[2022-07-11 03:50:44,024] {processor.py:153} INFO - Started process (PID=113) to work on /opt/airflow/dags/spark_dag.py
+[2022-07-11 03:50:44,045] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark_dag.py for tasks to queue
+[2022-07-11 03:50:44,062] {logging_mixin.py:115} INFO - [2022-07-11 03:50:44,061] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/spark_dag.py
+[2022-07-11 03:50:44,285] {processor.py:651} INFO - DAG(s) dict_keys(['twitter_batch']) retrieved from /opt/airflow/dags/spark_dag.py
+[2022-07-11 03:50:47,933] {logging_mixin.py:115} INFO - [2022-07-11 03:50:47,931] {dag.py:2420} INFO - Sync 1 DAGs
+[2022-07-11 03:50:49,829] {logging_mixin.py:115} INFO - [2022-07-11 03:50:49,829] {dag.py:2972} INFO - Setting next_dagrun for twitter_batch to 2022-07-11T02:00:00+00:00, run_after=2022-07-11T03:00:00+00:00
+[2022-07-11 03:50:50,647] {processor.py:161} INFO - Processing /opt/airflow/dags/spark_dag.py took 6.743 seconds
+[2022-07-11 03:51:22,345] {processor.py:153} INFO - Started process (PID=132) to work on /opt/airflow/dags/spark_dag.py
+[2022-07-11 03:51:22,363] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark_dag.py for tasks to queue
+[2022-07-11 03:51:22,385] {logging_mixin.py:115} INFO - [2022-07-11 03:51:22,384] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/spark_dag.py
+[2022-07-11 03:51:24,587] {processor.py:651} INFO - DAG(s) dict_keys(['twitter_batch']) retrieved from /opt/airflow/dags/spark_dag.py
+[2022-07-11 03:51:29,389] {logging_mixin.py:115} INFO - [2022-07-11 03:51:29,388] {dag.py:2420} INFO - Sync 1 DAGs
+[2022-07-11 03:51:46,755] {logging_mixin.py:115} INFO - [2022-07-11 03:51:46,735] {dag.py:2972} INFO - Setting next_dagrun for twitter_batch to 2022-07-11T02:00:00+00:00, run_after=2022-07-11T03:00:00+00:00
+[2022-07-11 03:51:48,167] {processor.py:161} INFO - Processing /opt/airflow/dags/spark_dag.py took 25.779 seconds
+[2022-07-11 04:09:09,101] {processor.py:153} INFO - Started process (PID=348) to work on /opt/airflow/dags/spark_dag.py
+[2022-07-11 04:09:49,840] {processor.py:153} INFO - Started process (PID=356) to work on /opt/airflow/dags/spark_dag.py
+[2022-07-11 04:09:50,582] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark_dag.py for tasks to queue
+[2022-07-11 04:09:50,752] {logging_mixin.py:115} INFO - [2022-07-11 04:09:50,653] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/spark_dag.py
+[2022-07-11 04:10:11,518] {processor.py:651} INFO - DAG(s) dict_keys(['twitter_batch']) retrieved from /opt/airflow/dags/spark_dag.py
+[2022-07-11 04:11:34,452] {processor.py:153} INFO - Started process (PID=375) to work on /opt/airflow/dags/spark_dag.py
+[2022-07-11 04:12:01,598] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark_dag.py for tasks to queue
+[2022-07-11 04:12:02,743] {logging_mixin.py:115} INFO - [2022-07-11 04:12:02,678] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/spark_dag.py
+[2022-07-11 04:12:38,801] {processor.py:153} INFO - Started process (PID=387) to work on /opt/airflow/dags/spark_dag.py
+[2022-07-11 04:12:58,313] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark_dag.py for tasks to queue
+[2022-07-11 04:13:11,728] {logging_mixin.py:115} INFO - [2022-07-11 04:13:08,973] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/spark_dag.py
+[2022-07-11 04:13:51,047] {processor.py:153} INFO - Started process (PID=399) to work on /opt/airflow/dags/spark_dag.py
+[2022-07-11 04:14:09,272] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark_dag.py for tasks to queue
+[2022-07-11 04:14:10,042] {logging_mixin.py:115} INFO - [2022-07-11 04:14:09,922] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/spark_dag.py
+[2022-07-11 04:14:34,236] {processor.py:153} INFO - Started process (PID=411) to work on /opt/airflow/dags/spark_dag.py
+[2022-07-11 04:14:34,944] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark_dag.py for tasks to queue
+[2022-07-11 04:14:38,620] {logging_mixin.py:115} INFO - [2022-07-11 04:14:38,056] {dagbag.py:508} INFO - Filling up the DagBag from /opt/airflow/dags/spark_dag.py
+[2022-07-11 04:15:28,011] {logging_mixin.py:115} INFO - [2022-07-11 04:15:27,465] {timeout.py:67} ERROR - Process timed out, PID: 411
+[2022-07-11 04:15:48,384] {logging_mixin.py:115} INFO - [2022-07-11 04:15:30,465] {dagbag.py:321} ERROR - Failed to import: /opt/airflow/dags/spark_dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 318, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark_dag.py", line 39, in <module>
+    start >> trigger_target_mssql >> trigger_transform >> done
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskmixin.py", line 80, in __rshift__
+    self.set_downstream(other)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskmixin.py", line 233, in set_downstream
+    self._set_relatives(task_or_task_list, upstream=False, edge_modifier=edge_modifier)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskmixin.py", line 203, in _set_relatives
+    def add_only_new(obj, item_set: Set[str], item: str) -> None:
+  File "/usr/local/lib/python3.7/typing.py", line 251, in inner
+    return cached(*args, **kwds)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/timeout.py", line 68, in handle_timeout
+    raise AirflowTaskTimeout(self.error_message)
+airflow.exceptions.AirflowTaskTimeout: DagBag import timeout for /opt/airflow/dags/spark_dag.py after 30.0s.
+Please take a look at these docs to improve your DAG import time:
+* https://airflow.apache.org/docs/apache-airflow/2.3.3/best-practices.html#top-level-python-code
+* https://airflow.apache.org/docs/apache-airflow/2.3.3/best-practices.html#reducing-dag-complexity, PID: 411
+[2022-07-11 04:15:53,762] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark_dag.py

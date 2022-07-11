@@ -1,0 +1,23 @@
+version: '3'
+services:
+  minio:
+    hostname: minio
+    image: minio/minio
+    container_name: minio
+    ports:
+      - '9000:9000'
+    volumes:
+      - '../minio/data/:/data'
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_DEFAULT_BUCKETS: tweets
+      #      MINIO_ACCESS_KEY: V42FCGRVMK24JJ8DHUYG
+      #   MINIO_SECRET_KEY: bKhWxVF3kQoLY9kFmt91l+tDrEoZjqnWXzY9Eza
+    command: server /data
+
+
+networks:
+  default:
+    external:
+      name: serasa

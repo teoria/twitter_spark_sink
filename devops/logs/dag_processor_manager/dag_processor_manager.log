@@ -1,0 +1,51 @@
+[2022-07-11 03:49:59,950] {manager.py:480} INFO - Processing files using up to 2 processes at a time 
+[2022-07-11 03:49:59,983] {manager.py:481} INFO - Process each file at most once every 30 seconds
+[2022-07-11 03:49:59,988] {manager.py:483} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2022-07-11 03:49:59,991] {manager.py:690} INFO - Searching for files in /opt/airflow/dags
+[2022-07-11 03:50:00,276] {manager.py:693} INFO - There are 2 files in /opt/airflow/dags
+[2022-07-11 03:50:02,296] {manager.py:809} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/spark_dag.py         92  0.39s             0           0
+/opt/airflow/dags/twitter_batch.py     93  0.34s             0           0
+================================================================================
+[2022-07-11 03:50:13,226] {manager.py:925} ERROR - Processor for /opt/airflow/dags/spark_dag.py exited with return code 1.
+[2022-07-11 03:50:32,196] {manager.py:809} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark_dag.py                               0          -1  11.45s          2022-07-11T03:50:13
+/opt/airflow/dags/twitter_batch.py                           1           0  10.87s          2022-07-11T03:50:12
+================================================================================
+[2022-07-11 03:51:03,269] {manager.py:809} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark_dag.py                               1           0  7.56s           2022-07-11T03:50:51
+/opt/airflow/dags/twitter_batch.py                           1           0  6.26s           2022-07-11T03:50:49
+================================================================================
+[2022-07-11 03:51:37,725] {manager.py:809} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark_dag.py        132  15.63s            1           0  7.56s           2022-07-11T03:50:51
+/opt/airflow/dags/twitter_batch.py    131  16.31s            1           0  6.26s           2022-07-11T03:50:49
+================================================================================
+[2022-07-11 03:52:08,288] {manager.py:809} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark_dag.py                               1           0  27.68s          2022-07-11T03:51:49
+/opt/airflow/dags/twitter_batch.py                           1           0  31.28s          2022-07-11T03:51:52
+================================================================================
