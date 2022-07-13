@@ -69,12 +69,12 @@ make start_ingestion
 
 ### Iniciando serviços batch
 ```
-make start 
+make start_batch 
 ``` 
 
 ### Parando serviços
 ```
-make stop 
+make stop_batch 
 ```
 ### Verificando status dos serviços
 ```
