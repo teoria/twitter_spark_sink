@@ -57,7 +57,7 @@ make start_storage
 ### Iniciando serviços de ingestão
 O serviço de ingestão recebe na variável `TWITTER_PARAM` o filtro que será enviado na requisição do Twiiter.
 ```
-TWITTER_PARAM=covid19,omicron make start_ingestion 
+TWITTER_PARAM=covid19 make start_ingestion 
 ``` 
  
 ### Iniciando serviços batch

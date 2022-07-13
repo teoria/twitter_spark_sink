@@ -1,5 +1,5 @@
 
-.PHONY: install_dependencies status start_postgres start stop
+.PHONY: install_dependencies status install_dependencies start_postgres create_network start_storage stop_storage start_batch stop_batch start_ingestion stop_ingestion
 
 status: ## Status dos containers
 	docker ps
