@@ -3,6 +3,7 @@ from airflow import models
 from airflow.operators.dummy import DummyOperator
 from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 
+from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
 
 with models.DAG(dag_id="twitter_batch",
                 start_date=datetime.datetime(2022, 2, 2),
@@ -13,28 +14,10 @@ with models.DAG(dag_id="twitter_batch",
                 },
                 catchup=False, ) as dag:
 
-    trigger_target_mssql = TriggerDagRunOperator(
-        task_id='trigger_mssql_ingestion',
-        trigger_dag_id='1.2_mssql_extrator_dag',
-        reset_dag_run=True,
-        wait_for_completion=True,
-        poke_interval=30
+     
+    submit_job = SparkSubmitOperator(
+        task_id='submit_job', 
+        conn_id='spark',
+        application="./dags/twitter_batch.py"
     )
-
-    trigger_transform = TriggerDagRunOperator(
-        task_id='trigger_target_dbt',
-        trigger_dag_id='1.3_dbt_dag',
-        reset_dag_run=True,
-        wait_for_completion=True,
-        poke_interval=30
-    )
-
-    start = DummyOperator(
-        task_id='Start'
-    )
-    done = DummyOperator(
-        task_id='Done'
-    )
-
-    start >> trigger_target_mssql >> trigger_transform >> done
-
+ 
