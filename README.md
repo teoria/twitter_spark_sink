@@ -25,8 +25,7 @@ Neste projeto foi utilizado as seguintes tecnologias open source:
 - [Docker](https://www.docker.com)
 - [Airflow](https://airflow.apache.org) 
 - [Min.io](https://min.io) 
-- [Spark](https://spark.apache.org) 
-- [Metabase](https://www.metabase.com)
+- [Spark](https://spark.apache.org)  
 
 ## Arquitetura
 
@@ -56,10 +55,18 @@ make start_storage
 
 ### Iniciando serviços de ingestão
 O serviço de ingestão recebe na variável `TWITTER_PARAM` o filtro que será enviado na requisição do Twiiter.
+
 ```
-TWITTER_PARAM=covid19 make start_ingestion 
+export TWITTER_PARAM=covid19
+```
+e em seguida inicialize a ingestão
+
+```
+make start_ingestion 
 ``` 
- 
+
+
+
 ### Iniciando serviços batch
 ```
 make start 
